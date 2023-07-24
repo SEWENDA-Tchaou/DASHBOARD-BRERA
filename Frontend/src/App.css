@@ -1,0 +1,7 @@
+body{
+  background-color: rgba(215, 212, 212, 0.062);
+}
+
+.home{
+  background-image: url(".home.png");
+}
