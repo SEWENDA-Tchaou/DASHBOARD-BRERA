@@ -1,5 +1,5 @@
 import  {React, useState, useEffect } from 'react'
-import axios from 'axios';
+// import axios from 'axios';
 
 function Newsletter() {
     // affichage des donnes de la base de donnee
@@ -26,7 +26,7 @@ function Newsletter() {
                            </div>
                            <div className='space-x-5 mr-10 py-1'>
                             <button className='bg-blue-500 text-white px-1 rounded'>COPIER L'EMAIL</button>
-                            <a href="" className='bg-red-700 text-white px-1 rounded' onClick={ e => handleDelete(data.ID)}>DELETE</a>
+                            <a href="" className='bg-red-700 text-white px-1 rounded' >DELETE</a>
                            </div>
                         </div>
                         <hr className='w-full h-1 text-white'/>
