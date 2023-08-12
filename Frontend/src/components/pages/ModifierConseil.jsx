@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
-import {Link, Navigate,  useParams} from 'react-router-dom'
+import { Navigate, useParams} from 'react-router-dom'
 
 function ModifierConseil() {
   const [titre, setTitre] = useState("")
@@ -14,7 +14,7 @@ function ModifierConseil() {
   console.log(data)
   
   useEffect(()=>{
-    fetch("http://localhost:8081/conseil")
+    fetch(`http://localhost:8081/conseil/`)
     .then(res =>res.json())
     .then(data =>setData(data))
     .catch(err => console.log(err));
@@ -39,7 +39,15 @@ console.log(information)
 
   const handleSubmit = ()=>{
     // event.preventDefault();
-    axios.fetch("http://localhost:8081/modifier/"+id, {id, titre, conseil1, conseil2, conseil3})
+    
+  // const updatedData = {
+  //   id: information.id,
+  //   titre: "titre",
+  //   conseil1: "conseil1",
+  //   conseil2: "conseil2",
+  //   conseil3: "conseil3",
+  // };
+    axios.put(`http://localhost:8081/modifier/${id}`, {titre, conseil1, conseil2, conseil3})
     .then(res => {console.log(res);
       Navigate("/");
     })
@@ -48,7 +56,7 @@ console.log(information)
 } 
   return (
     <div className='text-center m-5 text-black'>
-      <h3 className='uppercase font-bold text-xl my-5 text-white'>Modifier</h3>
+      <h3 className='uppercase font-bold text-xl my-5 text-white '>Modifier</h3>
       <div className="bg-yellow-100 rounded-xl shadow-xl py-5">
         <form action="" onSubmit={handleSubmit}>
               <div className='flex justify-around'>
@@ -88,6 +96,7 @@ console.log(information)
               />
           </div>
           <button 
+          type="submit"
             className='border m-5 justify-end items-end  bg-blue-600 rounded px-10 py-3 text-white'>
               Modifier
           </button>

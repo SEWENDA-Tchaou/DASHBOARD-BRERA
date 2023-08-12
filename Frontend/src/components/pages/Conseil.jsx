@@ -27,6 +27,15 @@ function Conseil() {
     .catch(err => console.log(err)); 
 
 } 
+
+ const handleDelete = async (id)=>{
+  try{
+    await axios.delete("http://localhost:8081/conseils/"+id)
+    window.location.reload()
+  }catch(err){
+    console.log(err)
+  }
+ }
   return (
     <div className='text-center m-5 text-black'>
       <h3 className='uppercase font-bold text-xl my-5 text-white'>Conseils</h3>
@@ -85,7 +94,7 @@ function Conseil() {
                                 <div className='space-x-5 mr-10 py-1'>
                             <Link to={`/read/${data.id}`} className='bg-green-500 text-white px-1 rounded'>Voir</Link>
                             <Link to={`/modifier/${data.id}`} className='bg-blue-500 text-white px-1 rounded'>MODIFFIER</Link>
-                            <a href="" className='bg-red-700 text-white px-1 rounded'>DELETE</a>
+                            <button  onClick={()=>handleDelete(data.id)} className='bg-red-700 text-white px-1 rounded'>DELETE</button>
                            </div>
                            </div>
                         <hr className='w-full h-1 text-white'/>

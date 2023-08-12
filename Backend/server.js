@@ -83,17 +83,17 @@ app.get("/conseil", (req, res)=>{
     })
 })
 
-app.get("/read/:id", (req, res)=>{
-    const sql = "SELECT * FROM conseils WHERE ID = ?";
-    const id = req.params.id;
-    db.query(sql, [id], (err, data)=>{
-        if(err){
-            res.json(err);
-        }else{
-            res.json(data)
-        }
-    })
-})
+// app.get("/read/:id", (req, res)=>{
+//     const sql = "SELECT * FROM conseils WHERE ID = ?";
+//     const id = req.params.id;
+//     db.query(sql, [id], (err, data)=>{
+//         if(err){
+//             res.json(err);
+//         }else{
+//             res.json(data)
+//         }
+//     })
+// })
 
 // newsletter
 app.post("/newsletter", (req, res) =>{
@@ -156,7 +156,20 @@ app.post("/conseil_sante", (req, res) =>{
     })
 })
 
+//supprimer un conseil
+app.delete("/conseils/:id", (req, res) =>{
+    const sql = "DELETE FROM conseils WHERE ID = ?";
 
+    const id = req.params.id;
+
+    db.query(sql, [ id], (err, data) =>{
+        if(err){
+            res.json("error")
+        }else{
+            res.json(data)
+        }
+    })
+})
 
 
 

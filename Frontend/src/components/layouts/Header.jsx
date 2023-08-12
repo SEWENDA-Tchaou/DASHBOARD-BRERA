@@ -9,7 +9,7 @@ function Header() {
           <img src="/images/BRERA.png" className='w-[80px] h-[80px]' alt="" />
         </div>
         <nav className='flex justify-around'>
-          <Link to="/">Dashboard</Link>
+          <Link to="/">Tableau de bord</Link>
           <Link  className='mx-5' href="">Mon Profile</Link>
         </nav>
       </header>
