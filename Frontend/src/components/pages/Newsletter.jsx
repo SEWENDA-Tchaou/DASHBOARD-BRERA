@@ -1,5 +1,5 @@
-import  {React, useState, useEffect } from 'react'
-// import axios from 'axios';
+import  { useState, useEffect } from 'react'
+import axios from 'axios';
 
 function Newsletter() {
     // affichage des donnes de la base de donnee
@@ -11,6 +11,15 @@ function Newsletter() {
         .catch(err => console.log(err));
     }, [])
     
+    const handleDelete = async (id)=>{
+        try{
+          await axios.delete("http://localhost:8081/newsletter/"+id)
+          window.location.reload()
+        }catch(err){
+          console.log(err)
+        }
+       }
+
   return (
     <div className='text-center p-2 shadow-md shadow-white '>
         <h1 className='uppercase text-2xl font-extrabold  text-white'>newsletter</h1>
@@ -26,7 +35,7 @@ function Newsletter() {
                            </div>
                            <div className='space-x-5 mr-10 py-1'>
                             <button className='bg-blue-500 text-white px-1 rounded'>COPIER L'EMAIL</button>
-                            <a href="" className='bg-red-700 text-white px-1 rounded' >DELETE</a>
+                            <button href="" onClick={()=>handleDelete(data.id)} className='bg-red-700 text-white px-1 rounded' >DELETE</button>
                            </div>
                         </div>
                         <hr className='w-full h-1 text-white'/>

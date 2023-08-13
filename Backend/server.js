@@ -83,6 +83,11 @@ app.get("/conseil", (req, res)=>{
     })
 })
 
+// afficher le contenu du boutton Lire la Suite
+app.get("/lire", (req, res)=>{
+  return res.json()
+})
+
 // app.get("/read/:id", (req, res)=>{
 //     const sql = "SELECT * FROM conseils WHERE ID = ?";
 //     const id = req.params.id;
@@ -171,9 +176,50 @@ app.delete("/conseils/:id", (req, res) =>{
     })
 })
 
+//supprimer une actualite
+app.delete("/actualite/:id", (req, res) =>{
+    const sql = "DELETE FROM actualite WHERE ID = ?";
 
+    const id = req.params.id;
 
+    db.query(sql, [ id], (err, data) =>{
+        if(err){
+            res.json("error")
+        }else{
+            res.json(data)
+        }
+    })
+})
 
+//supprimer un email
+app.delete("/Newsletter/:id", (req, res) =>{
+    const sql = "DELETE FROM newsletter WHERE ID = ?";
+
+    const id = req.params.id;
+
+    db.query(sql, [ id], (err, data) =>{
+        if(err){
+            res.json("error")
+        }else{
+            res.json(data)
+        }
+    })
+})
+
+//supprimer la pub
+app.delete("/pub_actu/:id", (req, res) =>{
+    const sql = "DELETE FROM page_acceuille WHERE ID = ?";
+
+    const id = req.params.id;
+
+    db.query(sql, [ id], (err, data) =>{
+        if(err){
+            res.json("error")
+        }else{
+            res.json(data)
+        }
+    })
+})
 
 
 app.listen(8081, ()=>{

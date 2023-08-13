@@ -19,6 +19,14 @@ function Actualite() {
       .catch(err => console.log(err));
   }, )
   
+  const handleDelete = async (id)=>{
+    try{
+      await axios.delete("http://localhost:8081/actualite/"+id)
+      window.location.reload()
+    }catch(err){
+      console.log(err)
+    }
+   }
   const handleSubmit = ()=>{
       // event.preventDefault();
       axios.post("http://localhost:8081/CreateActualite", {titre, theme, themeSuite})
@@ -93,7 +101,7 @@ function Actualite() {
                            </div>
                            <div className='space-x-5 mr-10 py-1'>
                             <button className='bg-blue-500 text-white px-1 rounded'>MODIFFIER</button>
-                            <a href="" className='bg-red-700 text-white px-1 rounded'>DELETE</a>
+                            <button href="" onClick={()=>handleDelete(data.id)} className='bg-red-700 text-white px-1 rounded'>DELETE</button>
                            </div>
                         </div>
                         <hr className='w-full h-1 text-white'/>

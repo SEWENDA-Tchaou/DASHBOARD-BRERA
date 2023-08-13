@@ -20,8 +20,15 @@ function Pageacueille() {
       Navigate("/Pageacceuille");
     })
     .catch(err => console.log(err)); 
-
-} 
+  } 
+  const handleDelete = async (id)=>{
+    try{
+      await axios.delete("http://localhost:8081/pub_actu/"+id)
+      window.location.reload()
+    }catch(err){
+      console.log(err)
+    }
+   }
   return (
     <div className='text-center m-5 text-black h-screen'>
       <h3 className='uppercase font-bold text-xl my-5 text-white'>Page Accueille</h3>
@@ -59,7 +66,7 @@ function Pageacueille() {
                                 <p className=' my-1  text-white'>{data.pub}.</p>
                                 <div className='space-x-5 mr-10 py-1'>
                             <button className='bg-blue-500 text-white px-1 rounded'>MODIFFIER</button>
-                            <a href="" className='bg-red-700 text-white px-1 rounded'>DELETE</a>
+                            <button href="" onClick={()=>handleDelete(data.id)} className='bg-red-700 text-white px-1 rounded'>DELETE</button>
                            </div>
                            </div>
                         <hr className='w-full h-1 text-white'/>
