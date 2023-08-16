@@ -34,7 +34,6 @@ function Newsletter() {
                                 <p className=' my-1 text-white' id='copieMail'>{data.email}</p>
                            </div>
                            <div className='space-x-5 mr-10 py-1'>
-                            <button className='bg-blue-500 text-white px-1 rounded'>COPIER L'EMAIL</button>
                             <button href="" onClick={()=>handleDelete(data.id)} className='bg-red-700 text-white px-1 rounded' >DELETE</button>
                            </div>
                         </div>

@@ -61,14 +61,15 @@ function Pageacueille() {
       </h3>
       {data.map((data, i)=>(
                     <div key={i} className='   bg-slate-500 '>
-                        <div className=''>
-                           <div className="flex px-10 space-x-5">
-                                <p className=' my-1  text-white'>{data.pub}.</p>
-                                <div className='space-x-5 mr-10 py-1'>
-                            <button className='bg-blue-500 text-white px-1 rounded'>MODIFFIER</button>
-                            <button href="" onClick={()=>handleDelete(data.id)} className='bg-red-700 text-white px-1 rounded'>DELETE</button>
-                           </div>
-                           </div>
+                      <div className=''>
+                        <div className="flex justify-between px-10 space-x-5">
+                          <p className=' my-1 text-justify text-white'>{data.pub}.</p>
+                          <button className='bg-blue-500  text-white p-1 my-10 rounded'>MODIFFIER</button>
+                          <button href="" onClick={()=>handleDelete(data.id)} className='bg-red-700 my-10 text-white px-1 rounded'>DELETE</button>
+                        <div className='space-x-5 mr-10 py-1'>
+                        
+                      </div>
+                    </div>
                         <hr className='w-full h-1 text-white'/>
                           
                         </div>

@@ -7,6 +7,7 @@ import Home from "../components/pages/Home"
 import Newsletter from './pages/newsletter'
 import ModifierConseil from './pages/ModifierConseil';
 import Read from './pages/Read';
+import ReadActualite from './pages/ReadActualite'
 
 function ContenuPage() {
   return (
@@ -20,6 +21,7 @@ function ContenuPage() {
             <Route path="/newsletter" element={<Newsletter/>} />
             <Route path="/modifier/:id" element={<ModifierConseil/>} />
             <Route path="/read/:id" element={<Read/>} />
+            <Route path="/readActu/:id" element={<ReadActualite/>} />
         </Routes>
       </section>
     </React.Fragment>

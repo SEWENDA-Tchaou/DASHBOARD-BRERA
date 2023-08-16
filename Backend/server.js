@@ -1,10 +1,13 @@
 import express from "express";
 import mysql  from "mysql";
 import cors from 'cors';
-
+import multer from "multer";
+import path from "path";
+ 
 const app = express()
 app.use(express.json())
 app.use(cors())
+
 app.use(express.urlencoded({extended: false}))
 const db = mysql.createConnection({
     host: "localhost",
@@ -83,6 +86,17 @@ app.get("/conseil", (req, res)=>{
     })
 })
 
+// app.get("/image", (req, res)=>{
+//     const sql = "SELECT * FROM image";
+//     db.query(sql, (err, data)=>{
+//         if(err){
+//             res.json(err);
+//         }else{
+//             res.json(data)
+//         }
+//     })
+// })
+
 // afficher le contenu du boutton Lire la Suite
 app.get("/lire", (req, res)=>{
   return res.json()
@@ -128,6 +142,40 @@ app.post("/CreateActualite", (req, res) =>{
             res.json(data)
         }
     })
+})
+
+//inserer image 
+const storage = multer.diskStorage({
+    destination: path.join( '../public_html/', 'uploads'),
+    filename: function (req, file, cb){
+        cb(null, Date.now() + '_' + file.originalname)
+    }
+})
+app.post("/imageupload", async (req, res) =>{
+    try{
+        let upload = multer({ storage: storage}).single('avatar');
+
+        upload(req, res, function(err){
+            if(!req.file){
+                return res.send("S'il vous plait veiller selectionner une image");
+            }else if(err instanceof multer.MulterError){
+                return res.send(err);
+            }else if (err){
+                return res.send(err);
+
+            }
+            const classifiedsadd = {
+                image: req.file.filename
+            };
+            const sql = "INSERT INTO image SET ?";
+            db.query(sql, classifiedsadd, (err,)=>{
+                if(err) throw err;
+                res.json({ success: 1})
+            })
+        })
+    }catch(err){
+        console.log(err)
+    }
 })
 
 // inserer des donnees dans la table pub_actualite

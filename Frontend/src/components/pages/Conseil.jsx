@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import {Link, Navigate,  } from 'react-router-dom'
 
@@ -85,13 +85,14 @@ function Conseil() {
       {data.map((data, i)=>(
                     <div key={i} className='   bg-slate-500 '>
                         <div className=''>
-                           <div className="flex px-10 space-x-5">
-                           <p className=' my-1  text-white'>{data.titre}.</p>
+                           <div className="flex justify-between px-10 space-x-5">
+                            <p className='text-white'>Vos conseils ont ete cree le :</p>
+                           {/* <p className=' my-1  text-white'>{data.titre}.</p>
                                 <p className=' my-1  text-white'>{data.conseil1}.</p>
                                 <p className=' my-1  text-white'>{data.conseil2}.</p>
-                                <p className=' my-1  text-white'>{data.conseil3}.</p>
+                                <p className=' my-1  text-white'>{data.conseil3}.</p> */}
                                 {/* <p className=' my-1  text-white'>{data.creation}.</p> */}
-                                <div className='space-x-5 mr-10 py-1'>
+                            <div className='space-x-5 mr-10 py-1'>
                             <Link to={`/read/${data.id}`} className='bg-green-500 text-white px-1 rounded'>Voir</Link>
                             <Link to={`/modifier/${data.id}`} className='bg-blue-500 text-white px-1 rounded'>MODIFFIER</Link>
                             <button  onClick={()=>handleDelete(data.id)} className='bg-red-700 text-white px-1 rounded'>DELETE</button>
