@@ -133,10 +133,6 @@ function Actualite() {
                         <div className='flex justify-between'>
                            <div className="flex px-10 space-x-5">
                             <p className='text-white'>Votre actualite a ete cree le :</p>
-                                {/* <p className=' my-1  text-white'>{data.id}.</p>
-                                <p className=' my-1  text-white'>{data.titre}.</p>
-                                <p className=' my-1 text-white' id=''>{data.theme}</p>
-                                <p className=' my-1 text-white' id=''>{data.themeSuite}</p> */}
                            </div>
                            <div className='space-x-5 mr-10 py-1'>
                            <Link to={`/readActu/${data.id}`} className='bg-green-500 text-white px-1 rounded'>Voir</Link>
@@ -148,11 +144,11 @@ function Actualite() {
                     </div>
                 ))}
             </div>
-            {
+            {/* {
               image.filepreview !==null ?
               <img src={image.filepreview} alt="" />
               : null
-            }
+            } */}
   </div>
   )
 }
